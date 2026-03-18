@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Receivers</title>
+</head>
+<body>
+<h2>Receiver Master</h2>
+
+<form method="post">
+    Name: <input type="text" name="name"><br>
+    State: <input type="text" name="state"><br>
+	Address: <input type="text" name="address"><br>
+    GSTIN: <input type="text" name="gst"><br>
+    <button type="submit">Add Receiver</button>
+</form>
+
+<hr>
+
+<table border="1" cellpadding="8">
+<tr>
+    <th>Name</th>
+    <th>State</th>
+	<th>Address</th>
+    <th>GSTIN</th>
+    <th>Action</th>
+</tr>
+
+{% for r in receivers %}
+<tr>
+    <td>{{ r[1] }}</td>
+    <td>{{ r[2] }}</td>
+    <td>{{ r[3] }}</td>
+	<td>{{ r[4] }}</td>
+    <td><a href="/delete_receiver/{{ r[0] }}">Delete</a></td>
+</tr>
+{% endfor %}
+</table>
+
+<a href="/">Back</a>
+</body>
+</html>

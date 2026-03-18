@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sellers</title>
+</head>
+<body>
+<h2>Seller Master</h2>
+
+<form method="post">
+    Name: <input type="text" name="name"><br>
+    State: <input type="text" name="state"><br>
+	Address: <input type="text" name="address"><br>
+    GSTIN: <input type="text" name="gst"><br>
+    <button type="submit">Add Seller</button>
+</form>
+
+<hr>
+
+<table border="1" cellpadding="8">
+<tr>
+    <th>Name</th>
+    <th>State</th>
+	<th>Address</th>
+    <th>GSTIN</th>
+    <th>Action</th>
+</tr>
+
+{% for s in sellers %}
+<tr>
+    <td>{{ s[1] }}</td>
+    <td>{{ s[2] }}</td>
+    <td>{{ s[3] }}</td>
+	<td>{{ s[4] }}</td>
+    <td><a href="/delete_seller/{{ s[0] }}">Delete</a></td>
+</tr>
+{% endfor %}
+</table>
+
+<a href="/">Back</a>
+</body>
+</html>
