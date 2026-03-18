@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Invoice Dashboard</title>
+</head>
+<body>
+
+<h2>Invoice Dashboard</h2>
+
+<a href="/invoice">Create Invoice</a> |
+<a href="/seller">Sellers</a> |
+<a href="/receiver">Receivers</a> |
+<a href="/product">Products</a>
+
+<br><br>
+
+<table border="1" cellpadding="8" cellspacing="0">
+<tr>
+    <th>Invoice No</th>
+    <th>Date</th>
+    <th>Taxable Value</th>
+    <th>CGST</th>
+    <th>SGST</th>
+    <th>IGST</th>
+    <th>Total Invoice Value</th>
+    <th>PDF</th>
+</tr>
+
+{% for inv in invoices %}
+<tr>
+    <td>{{ inv.invoice_no }}</td>
+    <td>{{ inv.date }}</td>
+    <td>{{ "%.2f"|format(inv.taxable) }}</td>
+    <td>{{ "%.2f"|format(inv.cgst) }}</td>
+    <td>{{ "%.2f"|format(inv.sgst) }}</td>
+    <td>{{ "%.2f"|format(inv.igst) }}</td>
+    <td><b>{{ "%.2f"|format(inv.total) }}</b></td>
+    <td>
+        <a href="{{ url_for('pdf', id=inv.id) }}">Download</a>
+    </td>
+</tr>
+{% endfor %}
+</table>
+
+</body>
+</html>
